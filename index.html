@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vanessa Quizar | Portafolio Creativo</title>
+  <style>
+    body {
+      background: #fcfaef;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      color: #222;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      padding: 20px 40px 10px 40px;
+      background: #fcfaef;
+      border-bottom: 1px solid #eee;
+    }
+    .logo {
+      width: 60px;
+      margin-right: 20px;
+    }
+    .title {
+      font-weight: bold;
+      font-size: 1.3em;
+      margin-right: 20px;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 30px auto;
+      max-width: 1200px;
+      gap: 40px;
+      padding: 0 20px;
+    }
+    .column {
+      flex: 1 1 350px;
+      min-width: 320px;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+    h2 {
+      font-size: 1.1em;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .grid img, .grid .placeholder {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      background: #e0e0e0;
+      border-radius: 4px;
+      transition: transform 0.3s ease;
+    }
+    .grid img:hover {
+      transform: scale(1.05);
+    }
+    .taller {
+      width: 100%;
+      margin: 10px 0;
+      border-radius: 4px;
+      background: #e0e0e0;
+      aspect-ratio: 3/2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #888;
+      font-size: 1em;
+    }
+    .footer {
+      text-align: center;
+      padding: 30px 0 10px 0;
+      font-size: 0.95em;
+      color: #444;
+    }
+    /* Media Queries */
+    @media (max-width: 1200px) {
+      .container {
+        max-width: 95%;
+      }
+    }
+    @media (max-width: 900px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+      .column {
+        max-width: 100%;
+      }
+      header {
+        padding: 15px 20px;
+      }
+      .logo {
+        width: 50px;
+      }
+      .title {
+        font-size: 1.1em;
+      }
+    }
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+      }
+      .logo {
+        margin-right: 0;
+      }
+      .title {
+        margin-right: 0;
+      }
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .container {
+        padding: 0 10px;
+      }
+      h2 {
+        font-size: 1em;
+      }
+    }
+    @media (max-width: 400px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .container {
+        margin: 15px auto;
+      }
+      .column {
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Logo" class="logo">
+    <span class="title">Vanessa Quizar</span>
+    <span>Portafolio creativo</span>
+  </header>
+  <div class="container">
+    <!-- Primera columna -->
+    <div class="column">
+      <h2>DISEÑO DE CARTELES Y SOCIAL MEDIA</h2>
+      <div class="grid">
+        <img src="cartel1.jpg" alt="Cartel 1">
+        <img src="cartel2.jpg" alt="Cartel 2">
+        <img src="cartel3.jpg" alt="Cartel 3">
+        <img src="cartel4.jpg" alt="Cartel 4">
+        <img src="cartel5.jpg" alt="Cartel 5">
+        <img src="cartel6.jpg" alt="Cartel 6">
+      </div>
+      <div class="taller">TALLERES DE Artes Plásticas</div>
+      <h2>ILUSTRACIONES E ICONOS</h2>
+      <div class="grid">
+        <img src="ilustracion1.jpg" alt="Ilustración 1">
+        <img src="ilustracion2.jpg" alt="Ilustración 2">
+        <img src="ilustracion3.jpg" alt="Ilustración 3">
+        <img src="ilustracion4.jpg" alt="Ilustración 4">
+        <img src="ilustracion5.jpg" alt="Ilustración 5">
+        <img src="ilustracion6.jpg" alt="Ilustración 6">
+        <img src="icono1.jpg" alt="Icono 1">
+        <img src="icono2.jpg" alt="Icono 2">
+        <img src="icono3.jpg" alt="Icono 3">
+      </div>
+      <div class="taller">Ilustración especial</div>
+    </div>
+    <!-- Segunda columna -->
+    <div class="column">
+      <h2>FANART</h2>
+      <div class="grid">
+        <img src="fanart1.jpg" alt="Fanart 1">
+        <img src="fanart2.jpg" alt="Fanart 2">
+        <img src="fanart3.jpg" alt="Fanart 3">
+        <img src="fanart4.jpg" alt="Fanart 4">
+        <img src="fanart5.jpg" alt="Fanart 5">
+        <img src="fanart6.jpg" alt="Fanart 6">
+        <img src="fanart7.jpg" alt="Fanart 7">
+        <img src="fanart8.jpg" alt="Fanart 8">
+        <img src="fanart9.jpg" alt="Fanart 9">
+      </div>
+      <h2>FOTOGRAFÍA</h2>
+      <div class="grid">
+        <img src="foto1.jpg" alt="Foto 1">
+        <img src="foto2.jpg" alt="Foto 2">
+        <img src="foto3.jpg" alt="Foto 3">
+        <img src="foto4.jpg" alt="Foto 4">
+        <img src="foto5.jpg" alt="Foto 5">
+        <img src="foto6.jpg" alt="Foto 6">
+        <img src="foto7.jpg" alt="Foto 7">
+        <img src="foto8.jpg" alt="Foto 8">
+        <img src="foto9.jpg" alt="Foto 9">
+      </div>
+      <img src="foto_grande.jpg" alt="Foto grande" style="width:100%; margin-top:20px; border-radius:4px;">
+    </div>
+  </div>
+  <div class="footer">
+    © 2024 Vanessa Quizar
+  </div>
+</body>
+</html>
