@@ -4,12 +4,46 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vanessa Quizar | Portafolio Creativo</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <style>
     body {
       background: #fcfaef;
       font-family: Arial, sans-serif;
       margin: 0;
       color: #222;
+    }
+    /* Estilos del Carrusel */
+    .swiper {
+      width: 100%;
+      height: 400px;
+      margin-bottom: 40px;
+    }
+    .swiper-slide {
+      text-align: center;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .swiper-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #222;
+      background: rgba(255, 255, 255, 0.8);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+      font-size: 20px;
+    }
+    .swiper-pagination-bullet-active {
+      background: #222;
     }
     header {
       display: flex;
@@ -141,14 +175,121 @@
         gap: 20px;
       }
     }
+    /* Estilos del Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-content {
+      position: relative;
+      width: 90%;
+      height: 90%;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-image {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      color: white;
+      font-size: 30px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .modal-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      font-size: 30px;
+      cursor: pointer;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      transition: background 0.3s ease;
+    }
+
+    .modal-nav:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-prev {
+      left: 20px;
+    }
+
+    .modal-next {
+      right: 20px;
+    }
+
+    .grid img {
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .modal-nav {
+        padding: 15px;
+        font-size: 24px;
+      }
+      
+      .modal-close {
+        top: 10px;
+        right: 10px;
+        font-size: 24px;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="Logo" class="logo">
+    <img src="assets/logo.webp" alt="Logo" class="logo">
     <span class="title">Vanessa Quizar</span>
-    <span>Portafolio creativo</span>
   </header>
+
+  <!-- Carrusel -->
+  <!-- <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="slide1.jpg" alt="Trabajo destacado 1">
+      </div>
+      <div class="swiper-slide">
+        <img src="slide2.jpg" alt="Trabajo destacado 2">
+      </div>
+      <div class="swiper-slide">
+        <img src="slide3.jpg" alt="Trabajo destacado 3">
+      </div>
+      <div class="swiper-slide">
+        <img src="slide4.jpg" alt="Trabajo destacado 4">
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div> -->
+
   <div class="container">
     <!-- Primera columna -->
     <div class="column">
@@ -208,5 +349,106 @@
   <div class="footer">
     © 2024 Vanessa Quizar
   </div>
+
+  <!-- Modal para ver imágenes -->
+  <div class="modal" id="imageModal">
+    <div class="modal-content">
+      <span class="modal-close">&times;</span>
+      <img class="modal-image" id="modalImage" src="" alt="Imagen ampliada">
+      <div class="modal-nav modal-prev" id="modalPrev">&#10094;</div>
+      <div class="modal-nav modal-next" id="modalNext">&#10095;</div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper('.swiper', {
+      // Configuración del carrusel
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      effect: 'fade',
+      fadeEffect: {
+        crossFade: true
+      }
+    });
+
+    // Código para el modal de imágenes
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeBtn = document.querySelector('.modal-close');
+    const prevBtn = document.getElementById('modalPrev');
+    const nextBtn = document.getElementById('modalNext');
+    let currentImageIndex = 0;
+    let images = [];
+
+    // Recolectar todas las imágenes de la galería
+    document.querySelectorAll('.grid img').forEach(img => {
+      images.push(img.src);
+    });
+
+    // Función para abrir el modal
+    function openModal(index) {
+      currentImageIndex = index;
+      modalImg.src = images[currentImageIndex];
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      updateNavigationButtons();
+    }
+
+    // Función para cerrar el modal
+    function closeModal() {
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Función para actualizar los botones de navegación
+    function updateNavigationButtons() {
+      prevBtn.style.display = currentImageIndex === 0 ? 'none' : 'block';
+      nextBtn.style.display = currentImageIndex === images.length - 1 ? 'none' : 'block';
+    }
+
+    // Event listeners para las imágenes
+    document.querySelectorAll('.grid img').forEach((img, index) => {
+      img.addEventListener('click', () => openModal(index));
+    });
+
+    // Event listeners para los botones del modal
+    closeBtn.addEventListener('click', closeModal);
+    prevBtn.addEventListener('click', () => {
+      if (currentImageIndex > 0) {
+        currentImageIndex--;
+        modalImg.src = images[currentImageIndex];
+        updateNavigationButtons();
+      }
+    });
+    nextBtn.addEventListener('click', () => {
+      if (currentImageIndex < images.length - 1) {
+        currentImageIndex++;
+        modalImg.src = images[currentImageIndex];
+        updateNavigationButtons();
+      }
+    });
+
+    // Cerrar modal con la tecla ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // Cerrar modal al hacer clic fuera de la imagen
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+  </script>
 </body>
 </html>
