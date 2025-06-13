@@ -19,7 +19,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 20px 40px;
-      background: #fcfaef;
+      background: #75e2fd;
       border-bottom: 1px solid #eee;
       position: sticky;
       top: 0;
@@ -50,9 +50,43 @@
       transition: 0.3s;
     }
 
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -6px);
+    }
+
     .nav-menu {
       display: flex;
       gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: #fcfaef;
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      }
+
+      .nav-menu.active {
+        display: flex;
+      }
     }
 
     .nav-menu a {
@@ -60,6 +94,7 @@
       text-decoration: none;
       font-size: 1.1em;
       transition: color 0.3s;
+      padding: 10px 0;
     }
 
     .nav-menu a:hover {
@@ -88,7 +123,7 @@
     /* Grid de imágenes */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      grid-template-columns: repeat(4, minmax(220px, 1fr));
       gap: 20px;
       margin-bottom: 30px;
     }
@@ -259,17 +294,15 @@
   <header>
     <img src="assets/logo.webp" alt="Logo" class="logo">
     <span class="title">Vanessa Guizar</span>
-    <div class="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
+    <div class="dropdown">
+      <button class="dropbtn">Menú ▼</button>
+      <div class="dropdown-content">
+        <a href="#carteles">Carteles y Social Media</a>
+        <a href="#ilustraciones">Ilustraciones e Iconos</a>
+        <a href="#fanart">Fanart</a>
+        <a href="#fotografia">Fotografía</a>
+      </div>
     </div>
-    <nav class="nav-menu">
-      <a href="#carteles">Carteles y Social Media</a>
-      <a href="#ilustraciones">Ilustraciones e Iconos</a>
-      <a href="#fanart">Fanart</a>
-      <a href="#fotografia">Fotografía</a>
-    </nav>
   </header>
 
   <div class="container">
@@ -327,20 +360,20 @@
           <div class="image-caption">Electrónica</div>
         </div>
         <div class="image-container">
-          <img src="assets/Ilustración_Iconos/Gota.png" alt="Gota">
-          <div class="image-caption">Gota</div>
+          <img src="assets/Ilustración_Iconos/DiaMuertos.png" alt="Día de Muertos">
+          <div class="image-caption">Día de Muertos</div>
         </div>
         <div class="image-container">
           <img src="assets/Ilustración_Iconos/ViajeInstante.png" alt="Viaje Instante">
           <div class="image-caption">Viaje Instante</div>
         </div>
         <div class="image-container">
-          <img src="assets/Ilustración_Iconos/Figuras.png" alt="Figuras">
-          <div class="image-caption">Figuras</div>
+          <img src="assets/Ilustración_Iconos/Gota.png" alt="Gota">
+          <div class="image-caption">Gota</div>
         </div>
         <div class="image-container">
-          <img src="assets/Ilustración_Iconos/DiaMuertos.png" alt="Día de Muertos">
-          <div class="image-caption">Día de Muertos</div>
+          <img src="assets/Ilustración_Iconos/Figuras.png" alt="Figuras">
+          <div class="image-caption">Figuras</div>
         </div>
         <div class="image-container">
           <img src="assets/Ilustración_Iconos/Fosil.png" alt="Fósil">
@@ -361,8 +394,8 @@
       <h2>FANART</h2>
       <div class="grid">
         <div class="image-container">
-          <img src="assets/Fanart/Ballet.png" alt="Ballet">
-          <div class="image-caption">Ballet</div>
+          <img src="assets/Fanart/Frezzer.png" alt="Frezzer">
+          <div class="image-caption">Frezzer</div>
         </div>
         <div class="image-container">
           <img src="assets/Fanart/Goku.png" alt="Goku">
@@ -373,20 +406,20 @@
           <div class="image-caption">Rosetta</div>
         </div>
         <div class="image-container">
-          <img src="assets/Fanart/PeteBurns.png" alt="Pete Burns">
-          <div class="image-caption">Pete Burns</div>
+          <img src="assets/Fanart/Francis.png" alt="Francis">
+          <div class="image-caption">Francis</div>
+        </div>
+        <div class="image-container">
+          <img src="assets/Fanart/Ballet.png" alt="Ballet">
+          <div class="image-caption">Ballet</div>
         </div>
         <div class="image-container">
           <img src="assets/Fanart/Hechizeragato.png" alt="Hechizera Gato">
           <div class="image-caption">Hechizera Gato</div>
         </div>
         <div class="image-container">
-          <img src="assets/Fanart/Frezzer.png" alt="Frezzer">
-          <div class="image-caption">Frezzer</div>
-        </div>
-        <div class="image-container">
-          <img src="assets/Fanart/Francis.png" alt="Francis">
-          <div class="image-caption">Francis</div>
+          <img src="assets/Fanart/PeteBurns.png" alt="Pete Burns">
+          <div class="image-caption">PeteBurns</div>
         </div>
       </div>
     </section>
